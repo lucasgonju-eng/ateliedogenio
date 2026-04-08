@@ -3,7 +3,7 @@ Param(
 )
 
 $Include = @(
-  'public','bootstrap','src','routes','resources','vendor','config','storage',
+  'public','vendas','bootstrap','src','routes','resources','vendor','config','storage',
   'composer.json','composer.lock','.htaccess'
 )
 
