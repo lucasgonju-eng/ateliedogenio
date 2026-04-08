@@ -1,5 +1,10 @@
 RewriteEngine On
 
+# Quando o acesso vier com prefixo /vendas, atende pela mesma aplicação
+RewriteRule ^vendas/imagens/(.*)$ imagens/$1 [L]
+RewriteRule ^vendas/?$ index.php [L,QSA]
+RewriteRule ^vendas/.*$ index.php [L,QSA]
+
 # Serve existing files directly
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
