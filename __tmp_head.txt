@@ -1,0 +1,40 @@
+<?php
+
+declare(strict_types=1);
+
+namespace AtelieDoGenio\Http\Controller;
+
+use AtelieDoGenio\Domain\Entity\Sale;
+use AtelieDoGenio\Domain\Enum\PaymentMethod;
+use AtelieDoGenio\Domain\Exception\BusinessRuleException;
+use AtelieDoGenio\Domain\Repository\SaleRepositoryInterface;
+use AtelieDoGenio\Domain\Service\SaleService;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+
+final class SaleController extends BaseController
+{
+    public function __construct(
+        private readonly SaleRepositoryInterface $sales,
+        private readonly SaleService $saleService,
+    ) {
+    }
+
+    public function index(ServerRequestInterface $request): ResponseInterface
+    {
+        $user = $this->user($request);
+        $query = $this->query($request);
+
+        $filters = [
+            'user_id' => $user['id'],
+        ];
+
+        if (isset($query['status'])) {
+            $filters['status'] = (string) $query['status'];
+        }
+
+        if (isset($query['limit'])) {
+            $filters['limit'] = max(1, (int) $query['limit']);
+        }
+
+        if (isset($query['offset'])) {

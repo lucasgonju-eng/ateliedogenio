@@ -1,0 +1,13 @@
+                        <td class="px-4 py-2">${userMap[entry.user_id] || (entry.user_id ?? '')}</td>
+                        <td class="px-4 py-2 text-right">R$ ${formatCurrency(entry.gross_amount)}</td>
+                        <td class="px-4 py-2 text-right">R$ ${formatCurrency(entry.fee_amount)}</td>
+                        <td class="px-4 py-2 text-right">R$ ${formatCurrency(entry.net_amount)}</td>
+                        <td class="px-4 py-2">${origin}</td>
+                    `;
+
+                    cashLedgerRows.appendChild(row);
+                });
+            }
+        } catch (error) {
+            console.error('Falha ao carregar resumo do fluxo', error);
+            setCashStatus('Não foi possível carregar o resumo do fluxo agora.', 'error');

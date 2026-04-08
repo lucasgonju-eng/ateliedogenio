@@ -1,0 +1,50 @@
+﻿# Documenta├º├úo de Endpoints
+
+| M├®todo | Caminho | Controller | A├º├úo |
+| --- | --- | --- | --- |
+| GET | / | WebController | home |
+| GET | /painel/vendedor | WebController | vendorDashboard |
+| GET | /painel/admin | WebController | adminDashboard |
+| POST | /auth/login | AuthController | login |
+| POST | /auth/logout | AuthController | logout |
+| POST | /auth/password/forgot | AuthController | forgotPassword |
+| POST | /auth/password/reset | AuthController | resetPassword |
+| GET | /products | ProductController | index |
+| GET | /products/options | ProductController | options |
+| GET | /products/{id}/sizes | ProductController | sizes |
+| POST | /products | ProductController | store |
+| GET | /products/{id} | ProductController | show |
+| PUT | /products/{id} | ProductController | update |
+| POST | /products/{id}/sizes | ProductController | updateSizeStock |
+| GET | /sales | SaleController | index |
+| POST | /sales | SaleController | createDraft |
+| PATCH | /sales/{id}/status | SaleController | updateStatus |
+| POST | /sales/{id}/checkout | SaleController | checkout |
+  - body: { payment_method: 'credito'|'debito'|'pix'|'dinheiro'|'transferencia', discount_percent?: number, installments?: number, terminal_id?: uuid, brand_id?: uuid }
+  - observaçao: quando installments/terminal_id/brand_id são enviados, o checkout calcula taxas usando public.payment_fees (faixas por parcelas) com tarifa de confirmação.
+| GET | /dashboard/vendor | DashboardController | vendorSummary |
+| GET | /dashboard/admin | DashboardController | adminSummary |
+| GET | /customers | CustomerController | index |
+| POST | /customers | CustomerController | store |
+| GET | /customers/{id} | CustomerController | show |
+| PUT | /customers/{id} | CustomerController | update |
+| GET | /inventory/movements | InventoryController | movements |
+| POST | /inventory/adjust | InventoryController | adjust |
+| GET | /cash-ledger | CashLedgerController | index |
+| GET | /cash-ledger/summary | CashLedgerController | summary |
+| POST | /cash-ledger/adjustment | CashLedgerController | adjust |
+| GET | /reports/sales | ReportController | sales |
+| GET | /reports/inventory | ReportController | inventory |
+| GET | /payment-config | PaymentConfigController | index |
+| POST | /payment-config | PaymentConfigController | upsert |
+| GET | /payment-catalog/brands | PaymentCatalogController | brands |
+| POST | /payment-catalog/brands | PaymentCatalogController | upsertBrand |
+| GET | /payment-catalog/terminals | PaymentCatalogController | terminals |
+| POST | /payment-catalog/terminals | PaymentCatalogController | upsertTerminal |
+| GET | /payment-catalog/fees | PaymentCatalogController | fees |
+| POST | /payment-catalog/fees | PaymentCatalogController | upsertFee |
+| GET | /items | ItemController | index |
+| POST | /items | ItemController | store |
+| GET | /items/{id} | ItemController | show |
+| PUT | /items/{id} | ItemController | update |
+| DELETE | /items/{id} | ItemController | destroy |

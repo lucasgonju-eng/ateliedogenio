@@ -1,0 +1,24 @@
+RewriteEngine On
+
+# Serve arquivos de /imagens a partir de /public/imagens
+RewriteRule ^imagens/(.*)$ public/imagens/$1 [L]
+
+# Este .htaccess deve ficar na pasta /vendas da hospedagem
+# Encaminha tudo para a subpasta public/, preservando assets e evitando loops
+
+# /vendas ou /vendas/
+RewriteRule ^$ public/index.php [L]
+
+# Se o alvo já é um arquivo ou diretório dentro de /vendas/public, deixa seguir
+RewriteRule ^public/ - [L]
+
+# Se o caminho corresponde a um arquivo físico na raiz (ex.: favicon.ico), encaminha para public/<arquivo>
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^(.+)$ public/$1 [L]
+
+# Se o caminho corresponde a um diretório físico na raiz, encaminha para public/<dir>
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^(.+)$ public/$1 [L]
+
+# Demais rotas: envia tudo para o front controller mantendo REQUEST_URI original
+RewriteRule ^ public/index.php [L]

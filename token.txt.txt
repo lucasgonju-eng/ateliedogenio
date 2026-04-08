@@ -1,0 +1,7 @@
+?plugins=forms,typography:66 cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation
+(anônimo) @ ?plugins=forms,typography:66Entenda o aviso
+admin:160 Falha ao carregar dashboard admin TypeError: window.apiFetch is not a function
+    at loadAdminDashboard (admin:131:43)
+    at admin:223:5
+loadAdminDashboard @ admin:160Entenda o erro
+:8080/products:1  Failed to load resource: the server responded with a status of 403 (Forbidden)

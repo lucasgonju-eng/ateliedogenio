@@ -1,0 +1,25 @@
+# Composer
+/vendor/
+composer.lock
+
+# Environment
+.env
+
+# Logs & cache
+/storage/logs/*.log
+/storage/cache/
+
+# IDE / OS
+.DS_Store
+Thumbs.db
+*.bak
+*.tmp
+.idea/
+.vscode/
+
+# PHPUnit cache
+.phpunit.result.cache
+
+.aider*
+
+dados_senhas.txt
