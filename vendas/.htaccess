@@ -1,0 +1,11 @@
+RewriteEngine On
+
+# Assets usados pela aplicação
+RewriteRule ^imagens/(.*)$ /public/imagens/$1 [L]
+
+# Encaminha tudo do /vendas para o front controller dedicado
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+RewriteRule ^ index.php [L,QSA]
